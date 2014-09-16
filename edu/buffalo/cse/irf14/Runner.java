@@ -5,6 +5,7 @@ package edu.buffalo.cse.irf14;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Arrays;
 
@@ -30,15 +31,15 @@ public class Runner {
 
 	/**
 	 * @param args
-	 * @throws FileNotFoundException 
+	 * @throws IOException 
 	 */
-	public static void main(String[] args) throws FileNotFoundException {
+	public static void main(String[] args) throws IOException {
 //		String ipDir = args[0];
 //		String indexDir = args[1];
 		//more? idk!
 		long startTime = System.currentTimeMillis();
 		String ipDir="C:/Users/Festy/Desktop/IR Slides/training";
-		PrintWriter writer = new  PrintWriter("C:/Users/Festy/Desktop/IR Slides/result.txt");
+		PrintWriter writer = new  PrintWriter("C:/Users/Festy/Desktop/IR Slides/result2.txt");
 		int count=0;
 		File ipDirectory = new File(ipDir);
 		String[] catDirectories = ipDirectory.list();
@@ -57,22 +58,18 @@ public class Runner {
 				continue;
 			
 			for (String f : files) {
-				try {
-					d = Parser.parse(dir.getAbsolutePath() + File.separator +f);
+				d = Parser.parse(dir.getAbsolutePath() + File.separator +f);
 				writer.print(Arrays.toString(d.getField(FieldNames.FILEID)));
 				writer.print(Arrays.toString(d.getField(FieldNames.CATEGORY)));
-				writer.print(Arrays.toString(d.getField(FieldNames.TITLE)));
-				writer.print(Arrays.toString(d.getField(FieldNames.PLACE)));
-				writer.print(Arrays.toString(d.getField(FieldNames.NEWSDATE)));
-				writer.print(Arrays.toString(d.getField(FieldNames.AUTHOR)));
-				writer.print(Arrays.toString(d.getField(FieldNames.AUTHORORG)));
+//				writer.print(Arrays.toString(d.getField(FieldNames.TITLE)));
+//				writer.print(Arrays.toString(d.getField(FieldNames.PLACE)));
+//				writer.print(Arrays.toString(d.getField(FieldNames.NEWSDATE)));
+//				writer.print(Arrays.toString(d.getField(FieldNames.AUTHOR)));
+//				writer.print(Arrays.toString(d.getField(FieldNames.AUTHORORG)));
+				writer.print(Arrays.toString(d.getField(FieldNames.CONTENT)));
 				writer.println();
 				count++;
-//						writer.addDocument(d);
-				} catch (ParserException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				} 
+//						writer.addDocument(d); 
 				
 			}
 			

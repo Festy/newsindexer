@@ -41,54 +41,33 @@ public class ParserTest {
 	
 	@Test
 	public void testParseNullFile() throws FileNotFoundException{
-		// Null file name (Test that the method will throw an exception)
-		try {
-			 d = Parser.parse(null);
-			fail("ParserException not thrown.");
-		} catch (ParserException e) {
-			assertNotNull(e);
-		}
+		d = Parser.parse(null);
+		fail("ParserException not thrown.");
 	}
 	
 	@Test
 	public void testParseBlankFile() throws FileNotFoundException{
-		// Blank file name (Test that the method will throw an exception)
-		try {
-			 d = Parser.parse("");
-			fail("ParserException not thrown.");
-		} catch (ParserException e) {
-			assertNotNull(e);
-		}
+		d = Parser.parse("");
+		fail("ParserException not thrown.");
 	}
 	
 	@Test
 	public void testParseInvalidFile() throws FileNotFoundException{
-		// Invalid file name (Test that the method will throw an exception)
-		try {
-			 d = Parser.parse("$%^thisFileNameWillNeverExist.txt");
-			fail("ParserException not thrown.");
-		} catch (ParserException e) {
-			assertNotNull(e);
-		}
+		d = Parser.parse("$%^thisFileNameWillNeverExist.txt");
+		fail("ParserException not thrown.");
 	}
 	
 	@Test
 	public void testParseValidFileName() throws FileNotFoundException {		
-		// Valid file name with document testing
-		try {
-			for(int i = 0; i < filenames.length; i++){
-				d = Parser.parse(filenames[i]);
-				validateTitle(d, i);
-				validateFileId(d, i);
-				validateCategory(d, i);
-				validateAuthorOrg(d, i);
-				validatePlace(d, i);
-				validateNewsDate(d, i);
-				validateAuthor(d, i);
-			}
-		} catch (ParserException e) {
-			e.printStackTrace(); // So that debugging may be a bit easier.
-			fail("A ParserException was thrown when it should not have been thrown.");
+		for(int i = 0; i < filenames.length; i++){
+			d = Parser.parse(filenames[i]);
+			validateTitle(d, i);
+			validateFileId(d, i);
+			validateCategory(d, i);
+			validateAuthorOrg(d, i);
+			validatePlace(d, i);
+			validateNewsDate(d, i);
+			validateAuthor(d, i);
 		}
 	}
 	
