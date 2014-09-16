@@ -39,8 +39,8 @@ public class Parser {
 
 	public static Document parse(String filename) throws ParserException, FileNotFoundException {
 		Document d = new Document();
+		cleaner();
 		fName=filename;
-		
 		f=new File(fName);
 		setFileID();
 		setFileCategory();
@@ -55,6 +55,7 @@ public class Parser {
 		d.setField(FieldNames.AUTHORORG,org);
 		d.setField(FieldNames.NEWSDATE,month+" "+date);
 		d.setField(FieldNames.PLACE,place);
+		
 //		d.setField(FieldNames.CONTENT,content);
 		return d;
 	}
@@ -178,5 +179,21 @@ public class Parser {
 	public static void setContent(){
 		
 	}
-
+	
+	public static void cleaner(){
+				fName="";
+				fileID="";
+				category="";
+				title="";
+				author="";
+				org="";
+				month="";
+				date="";
+				place="";
+				content="";
+				titleEndIndex=0;
+				dateStartIndex=0;
+				titleLineIndex=0;
+				f=null;
+	}
 }
